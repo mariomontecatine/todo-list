@@ -1,4 +1,5 @@
 import "./style.css";
+import { createTodo } from "./todo";
 
 console.log("¡Hola desde Webpack y el proyecto Todo List!");
 
