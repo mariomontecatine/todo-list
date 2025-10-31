@@ -1,0 +1,7 @@
+import "./style.css";
+
+console.log("¡Hola desde Webpack y el proyecto Todo List!");
+
+// Aquí es donde empezarás a importar tus otros módulos
+// import { ... } from './dom-stuff.js';
+// import { ... } from './todo-logic.js';
