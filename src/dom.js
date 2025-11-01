@@ -1,4 +1,4 @@
-import { projects } from "./todo";
+import { projects, deleteToDoFromProject } from "./todo";
 
 const projectsContainer = document.getElementById("projectsContainer");
 function displayProjects(project) {

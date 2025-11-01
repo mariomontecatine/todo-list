@@ -22,4 +22,8 @@ function addToDoToProject(toDo, project) {
   project.toDos.push(toDo);
 }
 
-export { createTodo, projects };
+function deleteToDoFromProject(project, index) {
+  project.toDos.splice(index, 1);
+}
+
+export { createTodo, deleteToDoFromProject, projects };
