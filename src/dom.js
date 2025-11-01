@@ -1,7 +1,12 @@
-import { projects, deleteToDoFromProject } from "./todo";
+import {
+  projects,
+  deleteToDoFromProject,
+  addToDoToProject,
+  createTodo,
+} from "./todo";
 
 const projectsContainer = document.getElementById("projectsContainer");
-function displayProjects(project) {
+function displayProjects(project, index) {
   const projectContainer = document.createElement("div");
   const projectTitle = document.createElement("h2");
   projectTitle.textContent = project.title;
@@ -32,6 +37,36 @@ function displayProjects(project) {
         renderTasks();
       });
     });
+    const form = document.createElement("form");
+    const inputTitle = document.createElement("input");
+    inputTitle.type = "text";
+    inputTitle.placeholder = "New task...";
+
+    const inputDate = document.createElement("input");
+    inputDate.type = "date";
+    inputDate.placeholder = "Deadline day";
+
+    const submitButton = document.createElement("button");
+    submitButton.type = "submit";
+    submitButton.textContent = "Add";
+
+    form.appendChild(inputTitle);
+    form.appendChild(inputDate);
+    form.appendChild(submitButton);
+    tasksContainer.appendChild(form);
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const newTitle = inputTitle.value;
+      const newDate = inputDate.value;
+
+      let todo = createTodo(newTitle, "Sin descripción", newDate, "Normal");
+
+      addToDoToProject(todo, project);
+
+      renderTasks();
+    });
   }
 
   projectContainer.addEventListener("click", () => {
@@ -42,5 +77,9 @@ function displayProjects(project) {
     }
   });
   projectsContainer.appendChild(projectContainer);
+  if (index === 0) {
+    renderTasks();
+  }
 }
-projects.forEach((project) => displayProjects(project));
+projects.forEach((project, index) => displayProjects(project, index));
+export { displayProjects };

@@ -1,2 +1,7 @@
 import "./style.css";
-import { createTodo } from "./todo";
+import { projects } from "./todo";
+import { displayProjects } from "./dom";
+
+projects.forEach((project, index) => {
+  displayProjects(project, index);
+});
