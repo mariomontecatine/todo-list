@@ -1,4 +1,5 @@
 let projects = [];
+const defaultProject = createProject(Tasks);
 
 function createTodo(title, description, dueDate, priority) {
   return {
