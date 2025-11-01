@@ -1,6 +1,4 @@
 let projects = [];
-const defaultProject = createProject(Tasks);
-let todo1 = createTodo(todo1, defaultProject);
 
 function createTodo(title, description, dueDate, priority) {
   return {
@@ -28,4 +26,20 @@ function deleteToDoFromProject(project, index) {
   project.toDos.splice(index, 1);
 }
 
-export { createTodo, deleteToDoFromProject, addToDoToProject, projects };
+const defaultProject = createProject("Tasks");
+
+let todo1 = createTodo(
+  "Mi primera tarea",
+  "Descripción de la tarea",
+  "2025-11-01",
+  "Alta"
+);
+addToDoToProject(todo1, defaultProject);
+
+export {
+  createTodo,
+  createProject,
+  deleteToDoFromProject,
+  addToDoToProject,
+  projects,
+};

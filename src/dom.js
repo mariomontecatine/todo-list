@@ -69,7 +69,7 @@ function displayProjects(project, index) {
     });
   }
 
-  projectContainer.addEventListener("click", () => {
+  projectTitle.addEventListener("click", () => {
     if (tasksContainer.innerHTML === "") {
       renderTasks();
     } else {
@@ -81,5 +81,4 @@ function displayProjects(project, index) {
     renderTasks();
   }
 }
-projects.forEach((project, index) => displayProjects(project, index));
 export { displayProjects };
