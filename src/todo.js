@@ -1,3 +1,5 @@
+let projects = [];
+
 function createTodo(title, description, dueDate, priority) {
   return {
     title,
@@ -7,6 +9,17 @@ function createTodo(title, description, dueDate, priority) {
   };
 }
 
-function project(toDo) {}
+function createProject(title) {
+  let project = {
+    title,
+    toDos: [],
+  };
+  projects.push(project);
+  return project;
+}
 
-export { createTodo };
+function addToDoToProject(toDo, project) {
+  project.toDos.push(toDo);
+}
+
+export { createTodo, projects };
