@@ -10,22 +10,37 @@ function displayProjects(project) {
 
   projectContainer.appendChild(tasksContainer);
 
+  function renderTasks() {
+    tasksContainer.innerHTML = "";
+    project.toDos.forEach((toDo, index) => {
+      const toDoContainer = document.createElement("div");
+      const toDoTitle = document.createElement("h2");
+      const projectDueDate = document.createElement("p");
+      const deleteToDo = document.createElement("button");
+
+      projectDueDate.textContent = toDo.dueDate;
+      toDoTitle.textContent = toDo.title;
+      deleteToDo.textContent = "Delete";
+
+      toDoContainer.appendChild(projectDueDate);
+      toDoContainer.appendChild(toDoTitle);
+      toDoContainer.appendChild(deleteToDo);
+      tasksContainer.appendChild(toDoContainer);
+
+      deleteToDo.addEventListener("click", () => {
+        deleteToDoFromProject(project, index);
+        renderTasks();
+      });
+    });
+  }
+
   projectContainer.addEventListener("click", () => {
     if (tasksContainer.innerHTML === "") {
-      project.toDos.forEach((toDo) => {
-        const toDoTitle = document.createElement("h2");
-        const projectDueDate = document.createElement("p");
-        projectDueDate.textContent = toDo.dueDate;
-        toDoTitle.textContent = toDo.title;
-
-        tasksContainer.appendChild(projectDueDate);
-        tasksContainer.appendChild(toDoTitle);
-      });
+      renderTasks();
     } else {
       tasksContainer.innerHTML = "";
     }
   });
-
   projectsContainer.appendChild(projectContainer);
 }
 projects.forEach((project) => displayProjects(project));
