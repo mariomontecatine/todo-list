@@ -6,18 +6,26 @@ function displayProjects(project) {
   const projectTitle = document.createElement("h2");
   projectTitle.textContent = project.title;
   projectContainer.appendChild(projectTitle);
+  const tasksContainer = document.createElement("div");
+
+  projectContainer.appendChild(tasksContainer);
 
   projectContainer.addEventListener("click", () => {
-    project.toDos.forEach((toDo) => {
-      const toDoTitle = document.createElement("h2");
-      const projectDueDate = document.createElement("p");
-      projectDueDate.textContent = toDo.dueDate;
-      toDoTitle.textContent = toDo.title;
+    if (tasksContainer.innerHTML === "") {
+      project.toDos.forEach((toDo) => {
+        const toDoTitle = document.createElement("h2");
+        const projectDueDate = document.createElement("p");
+        projectDueDate.textContent = toDo.dueDate;
+        toDoTitle.textContent = toDo.title;
 
-      projectContainer.appendChild(projectDueDate);
-      projectContainer.appendChild(toDoTitle);
-    });
+        tasksContainer.appendChild(projectDueDate);
+        tasksContainer.appendChild(toDoTitle);
+      });
+    } else {
+      tasksContainer.innerHTML = "";
+    }
   });
+
   projectsContainer.appendChild(projectContainer);
 }
 projects.forEach((project) => displayProjects(project));
