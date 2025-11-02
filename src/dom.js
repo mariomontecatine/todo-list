@@ -6,19 +6,24 @@ import {
 } from "./todo";
 
 const projectsContainer = document.getElementById("projectsContainer");
+projectsContainer.classList.add("projectsContainer");
 function displayProjects(project, index) {
   const projectContainer = document.createElement("div");
-  const projectTitle = document.createElement("h2");
+  projectContainer.classList.add("projectContainer");
+  const projectTitle = document.createElement("button");
+  projectTitle.classList.add("projectTitle");
   projectTitle.textContent = project.title;
   projectContainer.appendChild(projectTitle);
   const tasksContainer = document.createElement("div");
-
   projectContainer.appendChild(tasksContainer);
+  tasksContainer.classList.add("tasksContainer");
 
   function renderTasks() {
     tasksContainer.innerHTML = "";
     project.toDos.forEach((toDo, index) => {
       const toDoContainer = document.createElement("div");
+      toDoContainer.classList.add("toDoContainer");
+
       const toDoTitle = document.createElement("h2");
       const projectDueDate = document.createElement("p");
       const deleteToDo = document.createElement("button");
