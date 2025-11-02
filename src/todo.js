@@ -29,10 +29,10 @@ function deleteToDoFromProject(project, index) {
 const defaultProject = createProject("Tasks");
 
 let todo1 = createTodo(
-  "Mi primera tarea",
-  "Descripción de la tarea",
+  "First Task",
+  "Just my firs task, nothing important",
   "2025-11-01",
-  "Alta"
+  "Important"
 );
 addToDoToProject(todo1, defaultProject);
 
